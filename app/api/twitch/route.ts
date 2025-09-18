@@ -14,7 +14,7 @@ interface TwitchStream {
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  console.log("✅ API Route called for ARABIC streamers!"); // تغییر برای لاگ
+  console.log("✅ API Route called for ARABIC streamers!");
 
   try {
     // مرحله ۱: دریافت توکن دسترسی
@@ -26,10 +26,9 @@ export async function GET() {
     console.log("🔑 Got Twitch Access Token: Success");
 
     // مرحله ۲: دریافت لیست استریمرهای عرب زبان
-    // **-- تغییر اصلی اینجاست --**
     const streamsUrl = `https://api.twitch.tv/helix/streams?language=ar&first=100`;
 
-    console.log(`🚀 Querying Twitch for streams with language 'ar'...`); // تغییر برای لاگ
+    console.log(`🚀 Querying Twitch for streams with language 'ar'...`);
 
     const streamsResponse = await fetch(streamsUrl, {
       headers: {
@@ -44,7 +43,8 @@ export async function GET() {
     }
 
     const streamsData = await streamsResponse.json();
-    let liveStreams: TwitchStream[] = streamsData.data || [];
+    // **-- تغییر اصلی اینجاست: let به const تبدیل شد --**
+    const liveStreams: TwitchStream[] = streamsData.data || [];
 
     console.log(`📡 Found ${liveStreams.length} live Arabic-language streams.`);
 
