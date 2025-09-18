@@ -1,11 +1,11 @@
 // app/page.tsx
 
-"use client"; // این خط ضروری است تا بتوانیم از هوک‌های ری‌اکت استفاده کنیم
+"use client"; 
 
 import { useEffect, useState } from "react";
-import StreamerCard from "./components/StreamerCard"; // کامپوننت کارت را وارد می‌کنیم
+import StreamerCard from "./components/StreamerCard"; 
 
-// ساختار دیتا هر استریمر را تعریف می‌کنیم
+
 interface Stream {
   id: string;
   user_name: string;
@@ -22,7 +22,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchTwitchStreams = async () => {
       try {
-        // به API Route خودمان درخواست می‌فرستیم
+        
         const response = await fetch("/api/twitch");
         const data = await response.json();
         setStreams(data.streams || []);
@@ -46,11 +46,11 @@ export default function HomePage() {
           </h1>
           <p className="text-sm text-gray-400">مذيعو تويتش العرب</p>
 
-          {/* --- بخش اضافه شده --- */}
+          {/* --- added --- */}
           <p className="text-xs text-gray-500 mt-2 text-left">
             Developed by{" "}
             <a
-              href="https://github.com/Amiralijalalvand" // <-- آدرس گیت‌هاب خود را اینجا قرار دهید
+              href="https://github.com/Amiralijalalvand" 
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-purple-400 transition-colors"
@@ -58,7 +58,6 @@ export default function HomePage() {
               amirali jalalvand
             </a>
           </p>
-          {/* --- پایان بخش اضافه شده --- */}
         </div>
       </header>
 
